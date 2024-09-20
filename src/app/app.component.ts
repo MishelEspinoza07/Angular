@@ -9,5 +9,10 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angular-course-2024';
+  title: number = 10;
+  subNumber: number =2;
+
+  constructor(){
+
+  }
 }
