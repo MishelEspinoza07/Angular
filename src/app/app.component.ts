@@ -18,8 +18,16 @@ export class AppComponent {
   public sum(num1: number, num2: number): number{
     return num1 + num2;
   }
-  
+
   private substrack(num1: number, num2: number): number{
       return num1 - num2;
+  }
+  public getArray(){
+    const people: number[] = [1,2,3,4,5,6,7,8];
+    for(let i = 0; i < people.length; i++){
+      if(people[i] % 2 == 0){
+        console.log('person =', people[i]);
+      }
+    }
   }
 }
