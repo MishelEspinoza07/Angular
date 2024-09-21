@@ -9,10 +9,17 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title: number = 10;
-  subNumber: number =2;
+  title:number = 10;
 
   constructor(){
+    console.log('substract', this.substrack(8,4))
+  }
 
+  public sum(num1: number, num2: number): number{
+    return num1 + num2;
+  }
+  
+  private substrack(num1: number, num2: number): number{
+      return num1 - num2;
   }
 }
