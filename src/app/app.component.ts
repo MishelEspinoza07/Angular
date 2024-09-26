@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-interface Person{
+interface IPerson{
   name: string, 
   lastName: string, 
   age?: number
@@ -18,7 +18,7 @@ export class AppComponent {
   title:number = 10;
   animals: string[] = ['a','b','c','d','e','f','g'];
 
-  person: Person = {
+  person: IPerson = {
     name: 'Mishel',
     lastName: 'Espinoza',
     age: 20
@@ -27,6 +27,10 @@ export class AppComponent {
   students:number[]=[1,2,3,4,5,6]
   parents:number[]=[7,8,9,10]
 
+  var1 = 0
+  var2= null
+  var3 = 'hola'
+
 
   constructor(){
     const {name, age} = this.person
@@ -34,6 +38,9 @@ export class AppComponent {
     let both = [...this.students, ...this.parents]
     console.log('spreed operator:', both)
     console.log('REST operator:', this.sum(2,4,6))
+
+    console.log('Nullish Coaleshing:', this.var2 ?? this.var3)
+    console.log('OR:', this.var2 || this.var1)
 
 
     // console.log('substract', this.substrack(8,4))
