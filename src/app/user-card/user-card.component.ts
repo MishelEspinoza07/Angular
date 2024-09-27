@@ -1,7 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-user-card',
+  selector: 'user-card',
   standalone: true,
   imports: [],
   templateUrl: './user-card.component.html',
@@ -9,9 +9,14 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class UserCardComponent {
 
-  @Input() name: string = ''
-  @Input() email: string = ''
+  @Input() name:string = ''
+  @Input() email:string = ''
 
-  @Output() sendData: any
+  @Output() sendData = new EventEmitter()
+
+  public onSendData(){
+    //console.log('onSendData in child')
+    this.sendData.emit('Hi from child component')
+  }
 
 }
