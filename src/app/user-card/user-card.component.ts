@@ -24,23 +24,23 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
     showButton: boolean = false;
 
   constructor() {
-    console.log("user card constructor");
+    // console.log("user card constructor");
   }
 
   ngOnInit(): void {
-    console.log("user card ngOnInit");
-    this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
-    this.buttonTest.nativeElement.textContent = 'button Test in OnInit'
+    // console.log("user card ngOnInit");
+    // this.buttonShow.nativeElement.textContent = 'button Show in OnInit'
+    // this.buttonTest.nativeElement.textContent = 'button Test in OnInit'
     //this.password = this.name + ' ' + this.email + ' PASSWORD'
   }
 
   
   ngOnDestroy(): void {
-    console.log("User card Destroy");
+    // console.log("User card Destroy");
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("CHANGES: ", changes);
+    // console.log("CHANGES: ", changes);
     this.password =
     changes["name"].currentValue +
     changes["email"].currentValue +
@@ -48,27 +48,27 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 }
 
 ngDoCheck(): void {
-  console.log("DO CHECK user card");
+  // console.log("DO CHECK user card");
 }
 
 ngAfterContentInit(): void {
-  console.log("NG After CONTENT INIT");
+  // console.log("NG After CONTENT INIT");
 }
 
 ngAfterContentChecked(): void {
-  console.log("Ng After Content CHECKED")
+  // console.log("Ng After Content CHECKED")
 }
 
 ngAfterViewInit(): void {
-  console.log("NG AFTER VIEW INIT");
-  console.log("BUTTON TEST", this.buttonTest);
+  // console.log("NG AFTER VIEW INIT");
+  // console.log("BUTTON TEST", this.buttonTest);
   if(this.buttonTest){
     this.buttonTest.nativeElement.textContent = 'button Test in After View Init'
   }
 }
 
 ngAfterViewChecked(): void {
-  console.log('NG AFTER VIEW CHECKED')
+  // console.log('NG AFTER VIEW CHECKED')
 }
  
 
