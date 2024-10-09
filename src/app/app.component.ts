@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserCardComponent } from './user-card/user-card.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { CommonModule } from '@angular/common';
 
 interface IPerson{
   name: string, 
@@ -12,7 +13,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -46,12 +47,12 @@ export class AppComponent {
     console.log('OR:', this.var2 || this.var1)
 
 
-    // console.log('substract', this.substrack(8,4))
-    // console.log('MAP:', this.animals.map((animal)=> (animal + ' new')))
-    // console.log('FOREACH:', this.animals.forEach((animal)=> (animal + ' new')))
-    // console.log('FIND:', this.animals.find((animal)=> animal==='z'))
-    // console.log('FILTER:', this.animals.filter((animal)=> animal==='y'))
-    // console.log('INDEXOF:', this.animals.indexOf('c'))
+    console.log('substract', this.substrack(8,4))
+    console.log('MAP:', this.animals.map((animal)=> (animal + ' new')))
+    console.log('FOREACH:', this.animals.forEach((animal)=> (animal + ' new')))
+    console.log('FIND:', this.animals.find((animal)=> animal==='z'))
+    console.log('FILTER:', this.animals.filter((animal)=> animal==='y'))
+    console.log('INDEXOF:', this.animals.indexOf('c'))
   }
 
   public sum (...persons:number[]){
@@ -68,11 +69,12 @@ export class AppComponent {
   private substrack(num1: number, num2: number): number{
       return num1 - num2;
   }
+
   public getArray(){
     const people: number[] = [1,2,3,4,5,6,7,8];
     for(let i = 0; i < people.length; i++){
       if(people[i] % 2 == 0){
-        // console.log('person =', people[i]);
+        console.log('person =', people[i]);
       }
     }
   }
@@ -95,7 +97,7 @@ export class AppComponent {
   }
 
   public onResult(event:any){
-    console.log('event form child:', event)
     this.result = event ?? 0
   }
+
 }
