@@ -20,6 +20,9 @@ interface IPerson{
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+  userCardCreated: boolean = true 
+  
   result: number = 0;
   title:number = 10;
   animals: string[] = ['a','b','c','d','e','f','g'];
