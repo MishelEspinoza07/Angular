@@ -44,3 +44,17 @@
     @case(1) {<p>new Sintax, var is 1</p>}
     @default {<p>new Sintax, default</p>}
   }
+  
+<div class="container">
+  <div class ="column">
+    @for(person of persons; track person){
+      <person [person]="person"></person>
+    }
+  </div>
+  <div class ="column">
+    <div class="column-box">Total female gender: {{females}}</div>
+    <div class="column-box">Total male gender: {{males}}</div>
+    <div class="column-box">Total discounts: {{discounts}}</div>
+    <div class="column-box-button" (click)="deleteDiscounts()">Delete People With Discounts</div>
+  </div>
+</div>

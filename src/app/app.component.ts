@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserCardComponent } from './user-card/user-card.component';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { HistoryComponent } from './history/history.component';
+import { PersonComponent } from './person/person.component';
 import { CommonModule } from '@angular/common';
 
 interface IPerson{
@@ -13,7 +15,7 @@ interface IPerson{
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule],
+  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, HistoryComponent, CommonModule, PersonComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -27,6 +29,11 @@ export class AppComponent {
     lastName: 'Espinoza',
     age: 20
   }
+
+  females:number=0
+  males:number=0
+  discounts:number=0
+  persons:any[]=[{gender:0,name:"Marcela Valencia",age:23},{gender:1,name:"Aniceto Arce",age:12},{gender:0,name:"Luisa Armentia",age:43}]
 
   students:number[]=[1,2,3,4,5,6]
   parents:number[]=[7,8,9,10]
@@ -47,13 +54,27 @@ export class AppComponent {
     console.log('OR:', this.var2 || this.var1)
 
 
-    console.log('substract', this.substrack(8,4))
-    console.log('MAP:', this.animals.map((animal)=> (animal + ' new')))
-    console.log('FOREACH:', this.animals.forEach((animal)=> (animal + ' new')))
-    console.log('FIND:', this.animals.find((animal)=> animal==='z'))
-    console.log('FILTER:', this.animals.filter((animal)=> animal==='y'))
-    console.log('INDEXOF:', this.animals.indexOf('c'))
+    // console.log('substract', this.substrack(8,4))
+    // console.log('MAP:', this.animals.map((animal)=> (animal + ' new')))
+    // console.log('FOREACH:', this.animals.forEach((animal)=> (animal + ' new')))
+    // console.log('FIND:', this.animals.find((animal)=> animal==='z'))
+    // console.log('FILTER:', this.animals.filter((animal)=> animal==='y'))
+    // console.log('INDEXOF:', this.animals.indexOf('c'))
+    this.calculateTotals()
   }
+  public calculateTotals() {
+
+    this.females = this.persons.filter(p => p.gender === 0).length;
+    this.males = this.persons.filter(p => p.gender === 1).length;
+    this.discounts = this.persons.filter(p => p.age > 18).length;
+  }
+
+  public deleteDiscounts() {
+
+    this.persons = this.persons.filter(p => p.age <= 18);
+    this.calculateTotals();
+  }
+
 
   public sum (...persons:number[]){
     // return persons[0] + persons[1]
@@ -74,7 +95,7 @@ export class AppComponent {
     const people: number[] = [1,2,3,4,5,6,7,8];
     for(let i = 0; i < people.length; i++){
       if(people[i] % 2 == 0){
-        console.log('person =', people[i]);
+        // console.log('person =', people[i]);
       }
     }
   }
