@@ -8,6 +8,8 @@ import { CounterComponent } from "./counter/counter.component";
 import { filter, from, map, tap } from "rxjs";
 import { AppColorsDirective } from "./app-colors.directive";
 import { CreateHtmlDirective } from "./create-html.directive";
+import { PurePipe } from "./pure.pipe";
+import { ImpurePipe } from "./impure.pipe";
 
 interface Person {
   name: string;
@@ -25,7 +27,9 @@ interface Person {
     PersonListComponent,
     CounterComponent,
     AppColorsDirective,
-    CreateHtmlDirective
+    CreateHtmlDirective,
+    PurePipe,
+    ImpurePipe
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
@@ -51,7 +55,7 @@ export class AppComponent {
     age: 21
   }
 
-  students: number[] = [1,2,3,4,5,6]
+  students: number[] = [1,2,3,4,5,6,7,8,9]
   parents:number[] = [7,8,9,10]
 
 
@@ -150,5 +154,18 @@ export class AppComponent {
   public onResult(event: any){
     this.result = event ?? 0
   }
-
+  
+  public getColor(value: any): void {
+    console.log(value);
+  }
+  public sumPure(a:number, b:number): number {
+    return a + b;
+  }
+  public sumImpure(a:number, b:number): number {
+    return a + b + Math.random();
+  }
+  public addNumber() {
+    this.students = [...this.students, 12]
+  }
 }
+
