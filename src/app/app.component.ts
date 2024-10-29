@@ -1,5 +1,4 @@
 import { Component } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 import { UserCardComponent } from "./user-card/user-card.component";
 import { CalculatorComponent } from "./calculator/calculator.component";
 import { CommonModule } from "@angular/common";
@@ -12,7 +11,7 @@ import { PurePipe } from "./pure.pipe";
 import { ImpurePipe } from "./impure.pipe";
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
-
+import { RouterOutlet, RouterLink } from "@angular/router";
 interface Person {
   name: string;
   lastName: string;
@@ -23,6 +22,7 @@ interface Person {
   standalone: true,
   imports: [
     RouterOutlet,
+    outerLink,
     UserCardComponent,
     CalculatorComponent,
     CommonModule,
