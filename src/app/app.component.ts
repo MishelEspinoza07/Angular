@@ -1,28 +1,41 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { UserCardComponent } from './user-card/user-card.component';
-import { CalculatorComponent } from './calculator/calculator.component';
-import { CommonModule } from '@angular/common';
-import { PersonListComponent } from './person-list/person-list.component';
-import { CounterComponent } from './counter/counter.component';
-import { filter, from, map, tap } from 'rxjs'
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { UserCardComponent } from "./user-card/user-card.component";
+import { CalculatorComponent } from "./calculator/calculator.component";
+import { CommonModule } from "@angular/common";
+import { PersonListComponent } from "./person-list/person-list.component";
+import { CounterComponent } from "./counter/counter.component";
+import { filter, from, map, tap } from "rxjs";
+import { AppColorsDirective } from "./app-colors.directive";
+import { CreateHtmlDirective } from "./create-html.directive";
 
-interface Person{
-  name: string,
-  lastName: string,
-  age?: number
-}
+interface Person {
+  name: string;
+  lastName: string;
+  age?: number;
   
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, UserCardComponent, CalculatorComponent, CommonModule, PersonListComponent, CounterComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  imports: [
+    RouterOutlet,
+    UserCardComponent,
+    CalculatorComponent,
+    CommonModule,
+    PersonListComponent,
+    CounterComponent,
+    AppColorsDirective,
+    CreateHtmlDirective
+  ],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent {
 
-  users = [{name: 'abc', email: 'abs@gmail.com' }, {name: 'dfg', email: 'dfg@gmail.com' }]
+  users = [
+    { name: "abc", email: "abs@gmail.com" },
+    { name: "dfg", email: "dfg@gmail.com" },
+  ];
   selectedUser: any = this.users[0];
 
 
@@ -33,8 +46,8 @@ export class AppComponent {
   animals:string[] = ['a','b','c','d','e','f','g'];
 
   person: Person = {
-    name: 'Ernesto',
-    lastName: 'Juarez',
+    name: 'Mishel',
+    lastName: 'Espinoza',
     age: 21
   }
 
@@ -78,19 +91,21 @@ export class AppComponent {
     .pipe(
       map((res: number) => {
         //console.log('MAP OPERATOR RXJS: ',res)
-        if(res % 2 === 0){
+        if (res % 2 === 0) {
           return res;
         } else {
           return null;
         }
       }),
-      tap((res) => {console.log('VALUE: ', res)}),
+      tap((res) => {
+        console.log("VALUE: ", res);
+      }),
       filter((res: number | null) => res !== null)
-    ).subscribe((res) => {
-      console.log('SUSBSCRIBER 2: ', res);
+    )
+    .subscribe((res) => {
+      console.log("SUSBSCRIBER 2: ", res);
     });
   }
-
   public sum(...persons:number[]){
     //return persons[0] + persons[1]   // Esto es para el Rest Operator
     return persons.reduce((acumulador, valorActual) => 
