@@ -13,17 +13,25 @@
 <button (click)="selectedUser = users[1]">Change to user 1</button>
 
   @if(userCardCreated){
-    <user-card [name]="selectedUser.name" [email]="selectedUser.email" (sendData)="receiveData($event)">
-      <p>My HTML from Father</p>
-      <button>My Button from Father</button>
-    </user-card>
+    <user-card
+    [name]="selectedUser.name"
+    [email]="selectedUser.email"
+    (sendData)="receiveData($event)"
+  >
+    <p>My HTML from Father</p>
+    <button>My Button from Father</button>
+  </user-card>
+</user-card>
   } @else {
     <p>user card destroyed</p>
   }
 
 <p>RESULT: {{result}}</p>
 
-<calculator (sum)="onResult($event)" (mul)="onResult($event)" (reset)="onResult($event)">
+<calculator
+  (sum)="onResult($event)"
+  (mul)="onResult($event)"
+  (reset)="onResult($event)">
 </calculator>
 <p *ngIf="var1 === var2; else elseOld"> variables are equals </p>
 
@@ -55,10 +63,22 @@
     @case(1) {<p>new Sintax, var is 1</p>}
     @default {<p>new Sintax, default</p>}
   }
-  <counter></counter>
+  <counter>
+    
+  </counter>
 
   <button (click)="var1 = var1 + 1"> Increment Var1</button>
   <p> {{var1}}</p>
   <button (click) = "addVideo()" > ADD new Video to Youtube</button>
+
+  <div
+  [ngColors]="'green'"
+  [defaultColor]="'pink'"
+  (colorClick)="getColor($event)"
+  (colorDoubleClick)="getColor($event)"
+  style="border: 1px solid orange"
+>
+  My CUSTOM ATTRIBUTE
+</div>
 
   
