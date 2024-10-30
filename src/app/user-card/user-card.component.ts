@@ -3,6 +3,8 @@ import {AfterContentChecked, AfterContentInit,AfterViewChecked,  AfterViewInit, 
 
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../navbar/shared.modules';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: "user-card",
@@ -24,9 +26,15 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
     password: string = "";
     showButton: boolean = false;
 
-  constructor() {
-    // console.log("user card constructor");
-  }
+    subscription: Subscription =  new Subscription();
+    constructor(private activatedRoute: ActivatedRoute) {
+      //console.log("user card constructor");
+      this.subscription.add(this.activatedRoute.params.subscribe((params) => {
+        console.log("PARAMS: ", params)
+      }))
+      
+      console.log('Snapshot: ', this.activatedRoute.snapshot.params)
+    }
 
   ngOnInit(): void {
     // console.log("user card ngOnInit");
@@ -37,7 +45,8 @@ export class UserCardComponent implements OnInit, OnDestroy, OnChanges, DoCheck,
 
   
   ngOnDestroy(): void {
-    // console.log("User card Destroy");
+    console.log("User card Destroy");
+    this.subscription.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges): void {

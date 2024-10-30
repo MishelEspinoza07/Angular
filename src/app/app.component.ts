@@ -11,7 +11,7 @@ import { PurePipe } from "./pure.pipe";
 import { ImpurePipe } from "./impure.pipe";
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from "@angular/material/button";
-import { RouterOutlet, RouterLink } from "@angular/router";
+import { RouterOutlet, RouterLink, Router } from "@angular/router";
 interface Person {
   name: string;
   lastName: string;
@@ -22,7 +22,7 @@ interface Person {
   standalone: true,
   imports: [
     RouterOutlet,
-    outerLink,
+    RouterLink,
     UserCardComponent,
     CalculatorComponent,
     CommonModule,
@@ -69,8 +69,7 @@ export class AppComponent {
 
   youtube = from([1,2,3,4,5,6]) //Nuevo observable
 
-  constructor(){
-    const { name, age }= this.person
+  constructor(private router: Router) {
     //console.log('desestructuracion', name, age)
 
     let both = [...this.students, ...this.parents] //Esto es para el Spred Operator
@@ -170,6 +169,13 @@ export class AppComponent {
   }
   public addNumber() {
     this.students = [...this.students, 12]
+  }
+
+  public goToStudentModule() {
+    this.router.navigate(['student'])
+  }
+  public goToCard(){
+    this.router.navigate(['card', 1])
   }
 }
 

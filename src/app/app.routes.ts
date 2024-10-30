@@ -5,8 +5,9 @@ import { CalculatorComponent } from './calculator/calculator.component';
 
 export const routes: Routes = [
     {
-        path: 'card',
-        component: UserCardComponent
+        path: 'card/:studentId',
+        component: UserCardComponent,
+        title: 'user card test title'
     },
     {
         path: 'cal',
@@ -14,7 +15,10 @@ export const routes: Routes = [
     },
     {
         path: 'counter-nav',
-        loadComponent: () => import('./counter/counter.component').then(c => c.CounterComponent)
+        loadComponent: () => import('./counter/counter.component').then(c => {
+            //We can put more logic here
+           return c.CounterComponent
+        })
     },
     {
         path: 'student',
